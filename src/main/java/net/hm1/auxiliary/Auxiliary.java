@@ -1,0 +1,85 @@
+package net.hm1.auxiliary;
+
+import com.mojang.logging.LogUtils;
+import net.hm1.auxiliary.blocks.ModBlocks;
+import net.hm1.auxiliary.items.ModCreativeModTabs;
+import net.hm1.auxiliary.items.ModItems;
+import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
+import net.hm1.auxiliary.setup.registry.ArsNouveauAuxiliary;
+import net.hm1.auxiliary.villager.ModVillagers;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.slf4j.Logger;
+
+/*
+ * Auxiliary Mod by deviankeno
+ * Supporting logic for the Auxiliary Modpack.
+ *
+ * Shout out to @kaupenjoe and their tutorials!
+ */
+@Mod(Auxiliary.MOD_ID)
+public class Auxiliary
+{
+    public static final String MOD_ID = "auxiliary";
+    private static final Logger LOGGER = LogUtils.getLogger();
+
+    public Auxiliary()
+    {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modEventBus.addListener(this::commonSetup);
+
+        ModBlocks.BLOCKS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
+        ModCreativeModTabs.AUXILIARY_CREATIVE_TAB.register(modEventBus);
+        ModVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
+        ArsNouveauAuxiliary.Registry.register(modEventBus);
+        MinecraftForge.EVENT_BUS.register(this);
+        AuxiliaryConfig.register();
+        //modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(this::postSetup);
+
+    }
+
+    private void setupAddons(final FMLCommonSetupEvent event)
+    {
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event)
+    {
+
+    }
+
+    public void postSetup(final FMLCommonSetupEvent event)
+    {
+        event.enqueueWork(ArsNouveauAuxiliary::postSetup);
+    }
+
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+        //if (event.getTabKey() == CreativeModeTabs.)
+    }
+
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event)
+    {
+
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+
+        }
+    }
+}

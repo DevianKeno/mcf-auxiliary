@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_auxiliarite_alloy": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "auxiliary:auxiliarite_alloy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "auxiliary:core_item"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_auxiliarite_alloy",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "auxiliary:core_item"
+    ]
+  },
+  "sends_telemetry_event": false
+}

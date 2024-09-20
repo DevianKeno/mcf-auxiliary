@@ -1,0 +1,17 @@
+{
+  "type": "ars_nouveau:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": {
+        "tag": "forge:nether_stars"
+      }
+    },
+    {
+      "item": {
+        "tag": "forge:nether_stars"
+      }
+    }
+  ],
+  "sourceCost": 10000,
+  "tier": 8
+}

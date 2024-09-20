@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "bosses_of_mass_destruction:ancient_anima"
+    },
+    "E": {
+      "item": "bosses_of_mass_destruction:blazing_eye"
+    },
+    "N": {
+      "item": "bosses_of_mass_destruction:brimstone_nectar"
+    },
+    "O": {
+      "item": "bosses_of_mass_destruction:obsidian_heart"
+    },
+    "V": {
+      "item": "bosses_of_mass_destruction:void_thorn"
+    }
+  },
+  "pattern": [
+    " E ",
+    "VNO",
+    " A "
+  ],
+  "result": {
+    "item": "auxiliary:destruction_catalyst"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,19 @@
+{
+  "item.auxiliary.destruction_catalyst": "§5Destruction Catalyst",
+  "item.auxiliary.stalwart_crystal": "§5Stalwart Crystal",
+  "item.auxiliary.cataclysmic_amalgamation": "§5Cataclysmic Amalgamation",
+  "item.auxiliary.auxiliarite_alloy": "Auxiliarite God Metal Alloy",
+  "item.auxiliary.unresearched_gun_schematic": "Unresearched Gun Schematic",
+  "item.auxiliary.researched_gun_schematic": "Researched Gun Schematic",
+
+  "block.auxiliary.gun_workbench": "Gun Workbench",
+  "item.auxiliary.block_of_auxiliarite": "Block of Auxiliarite Alloy",
+
+  "creativetab.auxiliary_creative_tab": "Auxiliary",
+
+  "ars_nouveau.threadable_armor": "Can be Threaded",
+
+  "item.auxiliary.fulcaligr": "Fulcaligr",
+  "tooltip.auxiliary.fulcaligr.tooltip": "§6Legendary sword go brrr",
+  "tooltip.auxiliary.god_alloy.tooltip": "It emits an inexplicable grounding aura. This metal is the result of the amalgamation of countless forbidden materials, yet it somehow still holds up."
+}

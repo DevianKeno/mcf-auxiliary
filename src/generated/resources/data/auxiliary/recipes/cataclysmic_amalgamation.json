@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cataclysm:burning_ashes"
+    },
+    "E": {
+      "item": "cataclysm:abyssal_egg"
+    },
+    "H": {
+      "item": "cataclysm:monstrous_horn"
+    },
+    "V": {
+      "item": "cataclysm:void_core"
+    },
+    "W": {
+      "item": "cataclysm:witherite_ingot"
+    }
+  },
+  "pattern": [
+    " H ",
+    "WAV",
+    " E "
+  ],
+  "result": {
+    "item": "auxiliary:cataclysmic_amalgamation"
+  },
+  "show_notification": true
+}

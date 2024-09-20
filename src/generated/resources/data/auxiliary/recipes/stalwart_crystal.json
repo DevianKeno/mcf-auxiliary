@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "stalwart_dungeons:awful_crystal"
+    },
+    "C": {
+      "item": "stalwart_dungeons:chorundum"
+    },
+    "F": {
+      "item": "stalwart_dungeons:ancient_fire"
+    },
+    "T": {
+      "item": "stalwart_dungeons:tungsten_ingot"
+    },
+    "V": {
+      "item": "stalwart_dungeons:void_crystal"
+    }
+  },
+  "pattern": [
+    " A ",
+    "TVC",
+    " F "
+  ],
+  "result": {
+    "item": "auxiliary:stalwart_crystal"
+  },
+  "show_notification": true
+}

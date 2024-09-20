@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.hm1.auxiliary.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "AnimatedMagicArmorMixin",
+    "ArmorPerkHolderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "auxiliary.mixin-refmap.json"
+}

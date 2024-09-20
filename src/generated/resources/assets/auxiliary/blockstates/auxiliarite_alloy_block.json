@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "auxiliary:block/auxiliarite_alloy_block"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "ars_nouveau:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": {
+        "tag": "forge:ender_pearls"
+      }
+    },
+    {
+      "item": {
+        "tag": "forge:ender_pearls"
+      }
+    }
+  ],
+  "sourceCost": 5000,
+  "tier": 5
+}

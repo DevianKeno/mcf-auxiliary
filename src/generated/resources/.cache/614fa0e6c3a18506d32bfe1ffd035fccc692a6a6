@@ -1,0 +1,7 @@
+// 1.20.1	2024-09-19T15:21:02.0511459	Block States: auxiliary
+0b7b18d7e51ff1b069f9388d2e4a18b038c71a08 assets/auxiliary/blockstates/auxiliarite_alloy_block.json
+85e011ee8cd1aceb2d6b8cf01b046c61e982159a assets/auxiliary/blockstates/gun_workbench.json
+a4744dcba2c8959a076a16fc508937729414fae1 assets/auxiliary/models/block/auxiliarite_alloy_block.json
+2d907af0b7ad149a4b43ac89830eba5f2e85fca6 assets/auxiliary/models/block/gun_workbench.json
+d7b2cb5855ed5b576651d723f0cf833afc1e97be assets/auxiliary/models/item/auxiliarite_alloy_block.json
+6d385c7562687ef71a6099caeaa951ed8439d55f assets/auxiliary/models/item/gun_workbench.json
