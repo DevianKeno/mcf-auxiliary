@@ -11,9 +11,13 @@
 
   "creativetab.auxiliary_creative_tab": "Auxiliary",
 
-  "ars_nouveau.threadable_armor": "Can be Threaded",
-
   "item.auxiliary.fulcaligr": "Fulcaligr",
   "tooltip.auxiliary.fulcaligr.tooltip": "§6Legendary sword go brrr",
-  "tooltip.auxiliary.god_alloy.tooltip": "It emits an inexplicable grounding aura. This metal is the result of the amalgamation of countless forbidden materials, yet it somehow still holds up."
+  "tooltip.auxiliary.god_alloy.tooltip": "It emits an inexplicable grounding aura. This metal is the result of the amalgamation of countless forbidden materials, yet it somehow still holds up.",
+
+  "auxiliary:nether_first_enter": "",
+
+  "ars_nouveau.threadable_armor": "Can be Threaded",
+  "ars_nouveau.threaded": "Threaded",
+  "ars_nouveau.not_threaded": "This armor is not yet Threaded"
 }

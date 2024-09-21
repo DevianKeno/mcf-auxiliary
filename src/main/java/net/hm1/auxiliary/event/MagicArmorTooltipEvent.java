@@ -4,7 +4,6 @@ import com.hollingsworth.arsnouveau.api.perk.*;
 import com.hollingsworth.arsnouveau.api.registry.PerkRegistry;
 import com.hollingsworth.arsnouveau.api.util.RomanNumber;
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.armor.MagicArmor;
 import net.hm1.auxiliary.items.ModTags;
 import net.hm1.auxiliary.setup.registry.ArsNouveauAuxiliary;
 import net.minecraft.ChatFormatting;
@@ -52,11 +51,12 @@ public class MagicArmorTooltipEvent
                 return perkTooltips;
             }
 
-            if (MagicArmor.PERK_SLOTS_TIER_MAPPINGS.containsKey(perkHolder.getTier()))
+            if (ArsNouveauAuxiliary.PerkSlots.TIER_MAPPINGS.containsKey(perkHolder.getTier()))
             {
-                perkTooltips.add(Component.translatable("ars_nouveau.tier", perkHolder.getTier()).withStyle(ChatFormatting.GOLD));
+                perkTooltips.add(Component.literal(Component.translatable("ars_nouveau.threaded").getString() + " " + RomanNumber.toRoman(perkHolder.getTier()))
+                    .withStyle(ChatFormatting.GOLD));
 
-                var perkSlots = new ArrayList<>(MagicArmor.PERK_SLOTS_TIER_MAPPINGS.get(perkHolder.getTier()).stream().filter(s -> s != ArsNouveauAuxiliary.PerkSlots.NONE).toList());
+                var perkSlots = new ArrayList<>(ArsNouveauAuxiliary.PerkSlots.TIER_MAPPINGS.get(perkHolder.getTier()).stream().filter(s -> s != ArsNouveauAuxiliary.PerkSlots.NONE).toList());
                 if (perkSlots.isEmpty()) return perkTooltips;
 
                 var perks = perkHolder.getPerks();

@@ -1,9 +1,10 @@
 package net.hm1.auxiliary.datagen;
 
 import net.hm1.auxiliary.Auxiliary;
+import net.hm1.auxiliary.armor.MagicArmor;
 import net.hm1.auxiliary.items.ModTags;
+import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -12,14 +13,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends ItemTagsProvider
 {
-    public static final String[] ARMOR_PIECES = { "helmet", "chestplate", "leggings", "boots" };
     public ModItemTagProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, ExistingFileHelper existingFileHelper)
     {
         super(packOutput, lookupProvider, blockTags, Auxiliary.MOD_ID, existingFileHelper);
@@ -28,91 +29,34 @@ public class ModItemTagProvider extends ItemTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        try
-        {
-            tagDragonScale();
-            tagDragonsteel();
-        }
-        catch (Exception e)
-        {
-            DataProvider.LOGGER.error("Failed to initialize Ice and Fire Armor tags!");
-        }
+        for (var color : Auxiliary.ICEANDFIRE_DRAGON_SCALE_COLORS)
+            for (var piece : Auxiliary.ARMOR_PIECES) {
+                tagId(ModTags.DRAGON_SCALE, String.format("iceandfire:armor_%s_%s", color, piece));
+            }
+        for (var set : Auxiliary.ICEANDFIRE_DRAGONSTEEL_SET)
+            for (var piece : Auxiliary.ARMOR_PIECES) {
+                tagId(ModTags.DRAGONSTEEL, String.format("iceandfire:dragonsteel_%s_%s", set, piece));
+            }
 
-        try
-        {
-            tagMagicArmor();
-        }
-        catch (Exception e)
-        {
-            DataProvider.LOGGER.error("Failed to initialize Magic Armor tags!");
-        }
-
+        tagIdList(ModTags.MAGIC_ARMOR, MagicArmor.ALL_IDS);
     }
 
-    private void tagDragonScale()
+    public void tagId(TagKey<Item> tagKey, String id)
     {
-        for (String color : new String[] { "red", "bronze", "green", "gray", "blue", "white", "sapphire", "silver" , "electric", "amythest", "copper", "black" })
-            tagArmorPieces(ModTags.DRAGONSTEEL, "iceandfire", String.format("armor_%s", color), ARMOR_PIECES);
+        Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+        if (item == null || item == Items.AIR) return;
+        this.tag(tagKey).add(item);
     }
 
-    private void tagDragonsteel()
+    public void tagId(TagKey<Item> tagKey, String mod, String id)
     {
-        for (String color : new String[] { "fire", "ice", "lightning" })
-            tagArmorPieces(ModTags.DRAGONSTEEL, "iceandfire", String.format("dragonsteel_%s", color), ARMOR_PIECES);
+        Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod, id));
+        if (item == null || item == Items.AIR) return;
+        this.tag(tagKey).add(item);
     }
 
-    private void tagMagicArmor()
+    public void tagIdList(TagKey<Item> tagKey, List<? extends String> ids)
     {
-        //region Iron's Spells and Spellbooks
-        for (var set : new String[] { "wandering_magician", "pumpkin", "netherite_mage", "pyromancer", "electromancer", "archevoker", "cultist", "cryomancer", "shadowwalker", "priest", "plagued" })
-        {
-            tagArmorPieces(ModTags.MAGIC_ARMOR, "irons_spellbooks", set, ARMOR_PIECES);
-        }
-        tagItemIdList(ModTags.MAGIC_ARMOR, "irons_spellbooks", new String[]{ "tarnished_helmet", });
-        //endregion
-
-        //region Ars Nouveau
-        for (var set : new String[] { "sorcerer", "arcanist", "battlemage" })
-        {
-            tagArmorPieces(ModTags.MAGIC_ARMOR, "ars_nouveau", set, new String[] { "hood", "robes", "leggings", "boots"});
-        }
-        //endregion
-
-        //region Ars Elemental
-        for (var set : new String[] { "fire", "air", "earth", "water" })
-        {
-            tagArmorPieces(ModTags.MAGIC_ARMOR, "ars_elemental", set,
-                new String[] { "hat", "robes", "leggings", "boots"});
-        }
-        //endregion
-
-        //region Immersive Armors
-        for (var set : new String[] { "robe", "divine", })
-        {
-            tagArmorPieces(ModTags.MAGIC_ARMOR, "immersive_armors", set, ARMOR_PIECES);
-        }
-        //endregion
+        for (String id : ids) tagId(tagKey, id);
     }
-
-    //region Helpers
-    private void tagArmorPieces(TagKey<Item> pTag, String mod, String name, String[] pieces)
-    {
-        for (var piece : pieces)
-        {
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod, String.format("%s_%s", name, piece)));
-            if (item == Items.AIR) continue;
-            tag(pTag).add(item);
-        }
-    }
-
-    private void tagItemIdList(TagKey<Item> pTag, String mod, String[] itemNames)
-    {
-        for (var itemName : itemNames)
-        {
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod, itemName));
-            if (item == Items.AIR) continue;
-            tag(pTag).add(item);
-        }
-    }
-    //endregion
 }

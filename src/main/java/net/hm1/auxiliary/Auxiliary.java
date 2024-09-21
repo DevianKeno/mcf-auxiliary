@@ -29,12 +29,13 @@ import org.slf4j.Logger;
 public class Auxiliary
 {
     public static final String MOD_ID = "auxiliary";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Auxiliary()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
+        AuxiliaryConfig.register();
 
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
@@ -42,7 +43,6 @@ public class Auxiliary
         ModVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
         ArsNouveauAuxiliary.Registry.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
-        AuxiliaryConfig.register();
         //modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::postSetup);
 
@@ -54,7 +54,6 @@ public class Auxiliary
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
     }
 
     public void postSetup(final FMLCommonSetupEvent event)
@@ -82,4 +81,10 @@ public class Auxiliary
 
         }
     }
+
+    public static final String[] ARMOR_PIECES = { "helmet", "chestplate", "leggings", "boots" };
+    public static final String[] IRONS_SPELLBOOKS_ARMOR_SET = { "wandering_magician", "pumpkin", "netherite_mage", "pyromancer", "electromancer", "archevoker", "cultist", "cryomancer", "shadowwalker", "priest", "plagued" };
+    public static final String[] ICEANDFIRE_DRAGON_SCALE_COLORS = { "red", "bronze", "green", "gray", "blue", "white", "sapphire", "silver" , "electric", "amythest", "copper", "black" };
+    public static final String[] ICEANDFIRE_DRAGONSTEEL_SET = { "fire", "ice", "lightning" };
+    public static final String[] IMMERSIVE_ARMORS_SET = { "robe", "divine" };
 }

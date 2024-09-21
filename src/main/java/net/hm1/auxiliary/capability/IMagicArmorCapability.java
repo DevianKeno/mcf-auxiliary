@@ -16,7 +16,6 @@ import java.util.List;
 @AutoRegisterCapability
 public interface IMagicArmorCapability
 {
-//    public void onInventoryTick(ItemStack stack, Level world, Player player);
-//    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack);
-    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag);
+    void onInventoryTick(ItemStack stack, Level world, Player player);
+    Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack);
 }

@@ -1,3 +1,4 @@
-// 1.20.1	2024-09-20T22:35:50.0482604	Tags for minecraft:item mod id auxiliary
-e560fb09f5fecb0ed4279289f722a4657cf7a829 data/auxiliary/tags/items/armors/dragonsteel.json
-b7c673ae171b95d3ed1807bd8d0cbe78d733df7e data/auxiliary/tags/items/armors/magic.json
+// 1.20.1	2024-09-21T16:10:12.1601972	Tags for minecraft:item mod id auxiliary
+7b19805b522bb42913c7ab2d26210800f75d68ae data/auxiliary/tags/items/armors/dragonsteel.json
+ee893331efff215f598545ad2bd878b84daf5b84 data/auxiliary/tags/items/armors/dragon_scale.json
+1425feec71f16405541407a8cfd84585098b3ed5 data/auxiliary/tags/items/armors/magic.json

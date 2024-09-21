@@ -1,0 +1,12 @@
+{
+  "type": "ars_nouveau:armor_upgrade",
+  "pedestalItems": [
+    {
+      "item": {
+        "tag": "forge:rods/blaze"
+      }
+    }
+  ],
+  "sourceCost": 3000,
+  "tier": 1
+}

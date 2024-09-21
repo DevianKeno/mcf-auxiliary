@@ -6,9 +6,9 @@ import com.hollingsworth.arsnouveau.api.registry.PerkRegistry;
 import net.hm1.auxiliary.Auxiliary;
 import net.hm1.auxiliary.armor.MagicArmor;
 import net.hm1.auxiliary.recipe.MagicArmorUpgradeRecipe;
+import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -18,7 +18,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ArsNouveauAuxiliary
 {
@@ -55,123 +57,96 @@ public class ArsNouveauAuxiliary
         }
     }
 
+    public static String[] MAGIC_ARMOR_SET = { "sorcerer", "arcanist", "battlemage" };
+    public static String[] ELEMENTAL_ARMOR_SET = { "fire", "air", "earth", "aqua" };
+
     public static class PerkSlots
     {
         public static final PerkSlot NONE = new PerkSlot(new ResourceLocation("ars_nouveau", "zero"), 1000);
+        public static final List<PerkSlot> SLOTS_EMPTY = List.of();
+        public static final List<PerkSlot> SLOTS_T1 = List.of(PerkSlot.ONE);
+        public static final List<PerkSlot> SLOTS_T2 = List.of(PerkSlot.ONE, PerkSlot.ONE);
+        public static final List<PerkSlot> SLOTS_T3 = List.of(PerkSlot.ONE, PerkSlot.ONE, PerkSlot.ONE);
+        public static final List<PerkSlot> SLOTS_T4 = List.of(PerkSlot.ONE, PerkSlot.ONE, PerkSlot.TWO);
+        public static final List<PerkSlot> SLOTS_T5 = List.of(PerkSlot.ONE, PerkSlot.TWO, PerkSlot.TWO);
+        public static final List<PerkSlot> SLOTS_T6 = List.of(PerkSlot.TWO, PerkSlot.TWO, PerkSlot.TWO);
+        public static final List<PerkSlot> SLOTS_T7 = List.of(PerkSlot.TWO, PerkSlot.TWO, PerkSlot.THREE);
+        public static final List<PerkSlot> SLOTS_T8 = List.of(PerkSlot.TWO, PerkSlot.THREE, PerkSlot.THREE);
+        public static final List<PerkSlot> SLOTS_T9 = List.of(PerkSlot.THREE, PerkSlot.THREE, PerkSlot.THREE);
+
+        // Key is tier, Value is Perk Slots
+        public static final Map<Integer, List<PerkSlot>> TIER_MAPPINGS = new HashMap<>() {{
+            put(0, SLOTS_EMPTY);
+            put(1, SLOTS_T1);
+            put(2, SLOTS_T2);
+            put(3, SLOTS_T3);
+            put(4, SLOTS_T4);
+            put(5, SLOTS_T5);
+            put(6, SLOTS_T6);
+            put(7, SLOTS_T7);
+            put(8, SLOTS_T8);
+            put(9, SLOTS_T9);
+        }};
+
     }
 
-    public static final String[] ARMOR_PIECES = { "helmet", "chestplate", "leggings", "boots" };
     public static final int MAX_TIER_ALL = 9;
     public static void postSetup()
     {
-        perkArmorsAll();
-    }
-
-    private static void perkArmorsAll()
-    {
-        forArsNouveau();
-        forArsElemental();
-        forIronsSpellbooksArmor();
-        forIceAndFire();
-        forOthers();
-    }
-
-    public static void forArsNouveau()
-    {
-        for (var set : new String[]{ "sorcerer", "arcanist", "battlemage"})
+        if (AuxiliaryConfig.MagicArmorConfig.MAGIC_ARMOR_IS_THREADABLE.get())
         {
-            perkArmorPieces("ars_nouveau", set,
-                new String[]{ "hood", "robes", "leggings", "boots" },
-                MAX_TIER_ALL);
+            perkItemList(AuxiliaryConfig.MagicArmorConfig.MAGIC_ARMOR_ITEMS.get(), ArsNouveauAuxiliary.MAX_TIER_ALL);
         }
     }
 
-    public static void forArsElemental()
+    public static void perkItemList(List<? extends String> ids, int tier)
     {
-        for (var set : new String[]{ "fire", "air", "earth", "water"})
+        for (var id : ids)
         {
-            perkArmorPieces("ars_nouveau", set,
-                new String[]{ "hat", "robes", "leggings", "boots" },
-                MAX_TIER_ALL);
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+            if (item == null || item == Items.AIR) continue; /// do not perk air !!
+            PerkRegistry.registerPerkProvider(item, itemStack -> new ArmorPerkHolder(itemStack, getAllPerkSlotsForTier(tier)));
         }
-    }
-
-    public static void forIronsSpellbooksArmor()
-    {
-        var sets = new String[] {
-            "wandering_magician", "pumpkin", "netherite_mage",
-            "pyromancer", "electromancer", "archevoker", "cultist", "cryomancer", "shadowwalker", "priest", "plagued"
-        };
-
-        for (var set : sets) {
-            perkArmorSet("irons_spellbooks", set, MAX_TIER_ALL);
-        }
-
-        perkItems("irons_spellbooks", new String[]{ "tarnished_helmet" }, MAX_TIER_ALL);
-    }
-
-    public static void forIceAndFire()
-    {
-        //
-    }
-
-    public static void forOthers()
-    {
-        perkArmorSet("dreadsteel", "dreadsteel", 9);
     }
 
     /*
      * Perks armor from mod assuming it has an id format of '{name}_{piece}' (e.g. netherite_chestplate).
      */
-    private static void perkArmorSet(String mod, String set, int maxTier)
+    public static void perkArmorSet(String mod, String set, int maxTier)
     {
-        for (var piece : ARMOR_PIECES)
+        for (var piece : Auxiliary.ARMOR_PIECES)
         {
             String itemName = String.format("%s_%s", set, piece);
             Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod, itemName));
-            if (item == Items.AIR) continue; /// do not perk air !!
-
-            PerkRegistry.registerPerkProvider(item, itemStack -> new ArmorPerkHolder(itemStack, getPerkSlotsForTier(maxTier)));
-        }
-    }
-
-    private static void perkItems(String mod, String[] items, int tier)
-    {
-        for (var piece : items)
-        {
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod, piece));
-            if (item == Items.AIR) continue; /// do not perk air !!
-
-            PerkRegistry.registerPerkProvider(item, itemStack -> new ArmorPerkHolder(itemStack, getPerkSlotsForTier(tier)));
+            if (item == null || item == Items.AIR) continue; /// do not perk air !!
+            PerkRegistry.registerPerkProvider(item, itemStack -> new ArmorPerkHolder(itemStack, getAllPerkSlotsForTier(maxTier)));
         }
     }
 
     /*
-     * Perks specific armor pieces from mod.
+     * Perks armor appending given pieces to the end.
+     * e.g. "armor_head"
      */
-    private static void perkArmorPieces(String mod, String name, String[] pieces, int tier)
+    public static void perkArmorPieces(String id, String[] pieces, int tier)
     {
         for (var piece : pieces)
         {
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod, String.format("%s_%s", name, piece)));
-            if (item == Items.AIR) continue; /// do not perk air !!
-
-            PerkRegistry.registerPerkProvider(item, itemStack -> new ArmorPerkHolder(itemStack, getPerkSlotsForTier(tier)));
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(String.format("%s_%s", id, piece)));
+            if (item == null || item == Items.AIR) continue; /// do not perk air !!
+            PerkRegistry.registerPerkProvider(item, itemStack -> new ArmorPerkHolder(itemStack, getAllPerkSlotsForTier(tier)));
         }
     }
 
-    private static List<List<PerkSlot>> getPerkSlotsForTier(int tier)
+    public static List<List<PerkSlot>> getAllPerkSlotsForTier(int maxTier)
     {
         var perkSlots = new ArrayList<List<PerkSlot>>();
-
-        for (int i = 0; i < tier; i++)
+        for (int i = 0; i < maxTier; i++)
         {
-            if (MagicArmor.PERK_SLOTS_TIER_MAPPINGS.containsKey(i + 1))
+            if (ArsNouveauAuxiliary.PerkSlots.TIER_MAPPINGS.containsKey(i))
             {
-                perkSlots.add(MagicArmor.PERK_SLOTS_TIER_MAPPINGS.get(i + 1));
+                perkSlots.add(ArsNouveauAuxiliary.PerkSlots.TIER_MAPPINGS.get(i));
             }
         }
-
         return perkSlots;
     }
 }

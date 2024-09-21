@@ -2,19 +2,23 @@ package net.hm1.auxiliary.event;
 
 import java.util.List;
 
-import com.hollingsworth.arsnouveau.api.perk.IPerkHolder;
-import com.hollingsworth.arsnouveau.api.perk.IPerkProvider;
-import com.hollingsworth.arsnouveau.api.registry.PerkRegistry;
+import com.hollingsworth.arsnouveau.api.mana.IManaCap;
+import com.hollingsworth.arsnouveau.common.capability.ANPlayerCapAttacher;
+import com.hollingsworth.arsnouveau.common.capability.IPlayerCap;
+import com.hollingsworth.arsnouveau.common.capability.ManaCapAttacher;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.hm1.auxiliary.Auxiliary;
 import net.hm1.auxiliary.armor.MagicArmor;
 import net.hm1.auxiliary.capability.IMagicArmorCapability;
-import net.hm1.auxiliary.capability.MagicArmorCapabilityProvider;
+import net.hm1.auxiliary.capability.MagicArmorCapabilityAttacher;
 import net.hm1.auxiliary.items.ModItems;
+import net.hm1.auxiliary.items.ModTags;
 import net.hm1.auxiliary.villager.ModVillagers;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,44 +29,25 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 @Mod.EventBusSubscriber(modid = Auxiliary.MOD_ID)
 public class ModEvents
 {
     @SubscribeEvent
-    public static void attach(AttachCapabilitiesEvent<ItemStack> event)
+    public static void attachCapabilities(AttachCapabilitiesEvent<ItemStack> item)
     {
-        setupMagicArmorCapabilities(event);
+        if (item.getObject().is(ModTags.MAGIC_ARMOR))
+        {
+            MagicArmorCapabilityAttacher.attach(item);
+        }
     }
 
-    static void setupMagicArmorCapabilities(AttachCapabilitiesEvent<ItemStack> event)
+    @SubscribeEvent
+    public static void registerCapabilities(RegisterCapabilitiesEvent event)
     {
-//        if (event.getObject().getCapability(MagicArmorCapabilityProvider.MAGIC_ARMOR_CAPABILITY).isPresent()) return;
-
-        if (event.getObject().getItem() instanceof ArmorItem armorItem) {
-            if (ForgeRegistries.ITEMS.getKey(armorItem).equals(new ResourceLocation("irons_spellbooks", "wandering_magician_helmet"))) {
-                ICapabilityProvider provider = new ICapabilityProvider()
-                {
-                    MagicArmor magicArmor;
-                    LazyOptional<IMagicArmorCapability> magicArmorCapability = LazyOptional.of(() -> magicArmor);
-                    Capability<IMagicArmorCapability> capability = CapabilityManager.get(new CapabilityToken<IMagicArmorCapability>(){});
-
-                    @Override
-                    public <T> @NotNull LazyOptional<T> getCapability(Capability<T> cap, Direction direction) {
-                        if (cap == this.capability) {
-                            return magicArmorCapability.cast();
-                        }
-                        return LazyOptional.empty();
-                    }
-                };
-
-                event.addCapability(new ResourceLocation(Auxiliary.MOD_ID, "magic_armor"), provider);
-            }
-        }
+        event.register(IMagicArmorCapability.class);
     }
 
     @SubscribeEvent
