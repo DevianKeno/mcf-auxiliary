@@ -1,59 +1,56 @@
 package net.hm1.auxiliary.event;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import com.hollingsworth.arsnouveau.api.mana.IManaCap;
-import com.hollingsworth.arsnouveau.common.capability.ANPlayerCapAttacher;
-import com.hollingsworth.arsnouveau.common.capability.IPlayerCap;
-import com.hollingsworth.arsnouveau.common.capability.ManaCapAttacher;
+import com.google.common.collect.ImmutableMultimap;
+import com.hollingsworth.arsnouveau.api.perk.*;
+import com.hollingsworth.arsnouveau.api.util.PerkUtil;
+import com.hollingsworth.arsnouveau.common.util.PortUtil;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.armor.MagicArmor;
-import net.hm1.auxiliary.capability.IMagicArmorCapability;
-import net.hm1.auxiliary.capability.MagicArmorCapabilityAttacher;
 import net.hm1.auxiliary.items.ModItems;
 import net.hm1.auxiliary.items.ModTags;
 import net.hm1.auxiliary.villager.ModVillagers;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.capabilities.*;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.ItemAttributeModifierEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = Auxiliary.MOD_ID)
 public class ModEvents
 {
     @SubscribeEvent
-    public static void attachCapabilities(AttachCapabilitiesEvent<ItemStack> item)
+    public static void onItemAttributeModifier(ItemAttributeModifierEvent event)
     {
-        if (item.getObject().is(ModTags.MAGIC_ARMOR))
-        {
-            MagicArmorCapabilityAttacher.attach(item);
+        var itemStack = event.getItemStack();
+
+        if (!itemStack.is(ModTags.MAGIC_ARMOR)) return;
+        if (!(itemStack.getItem() instanceof ArmorItem armor)) return;
+        if (event.getSlotType() != armor.getEquipmentSlot()) return;
+        if (!(PerkUtil.getPerkHolder(itemStack) instanceof ArmorPerkHolder armorPerkHolder)) return;
+
+        var attributes = new ImmutableMultimap.Builder<Attribute, AttributeModifier>();
+
+        for (var p : armorPerkHolder.getPerkInstances()){
+            attributes.putAll(p.getPerk().getModifiers(armor.getEquipmentSlot(), itemStack, p.getSlot().value));
         }
-    }
-
-    @SubscribeEvent
-    public static void registerCapabilities(RegisterCapabilitiesEvent event)
-    {
-        event.register(IMagicArmorCapability.class);
-    }
-
-    @SubscribeEvent
-    public void registerCaps(RegisterCapabilitiesEvent event)
-    {
-        event.register(IMagicArmorCapability.class);
+        for (var entry : attributes.build().entries()) {
+            event.addModifier(entry.getKey(), entry.getValue());
+        }
     }
 
     @SubscribeEvent

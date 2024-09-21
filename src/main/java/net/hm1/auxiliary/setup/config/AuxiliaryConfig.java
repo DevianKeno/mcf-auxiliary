@@ -45,7 +45,7 @@ public class AuxiliaryConfig
         SERVER_BUILDER.push("magic armor settings");
             MagicArmorConfig.MAGIC_ARMOR_ITEMS = SERVER_BUILDER
                 .comment("The list of all ids of armor tagged '#armors/magic'")
-                .comment("This also affects which armors can be Threaded'")
+                .comment("This also affects which armors can be Threaded")
                 .defineListAllowEmpty("items", MagicArmor.ALL_IDS, AuxiliaryConfig::isItemExists);
             MagicArmorConfig.MAGIC_ARMOR_IS_THREADABLE = SERVER_BUILDER
                 .comment("Whether to make all magic armors Ars Nouveau Threadable")
