@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.mixin;
+package net.hm1.auxiliary.mixin.arsnouveau;
 
 import com.hollingsworth.arsnouveau.api.perk.ArmorPerkHolder;
 import com.hollingsworth.arsnouveau.api.perk.PerkSlot;
@@ -11,6 +11,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Retrieve slots from the new mappings
+ */
 @Mixin({ArmorPerkHolder.class})
 public class ArmorPerkHolderMixin
 {
@@ -20,8 +23,7 @@ public class ArmorPerkHolderMixin
         method = {"getSlotsForTier"},
         at = {@At("HEAD")},
         cancellable = true,
-        remap = false
-    )
+        remap = false)
     void auxiliary$getSlotsForTier(CallbackInfoReturnable<List<PerkSlot>> cir)
     {
         cir.setReturnValue(new ArrayList<>(ArsNouveauAuxiliary.PerkSlots.TIER_MAPPINGS.get(((ArmorPerkHolder)(Object) this).getTier())));

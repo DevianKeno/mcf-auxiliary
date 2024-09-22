@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "auxiliary:item/researched_gun_schematic",
+      "predicate": {
+        "minecraft:custom_model_data": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "auxiliary:item/unresearched_gun_schematic"
+  }
+}

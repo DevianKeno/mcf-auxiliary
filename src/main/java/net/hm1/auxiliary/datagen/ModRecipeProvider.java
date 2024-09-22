@@ -1,7 +1,7 @@
 package net.hm1.auxiliary.datagen;
 
-import net.hm1.auxiliary.blocks.ModBlocks;
-import net.hm1.auxiliary.items.ModItems;
+import net.hm1.auxiliary.init.ModBlocks;
+import net.hm1.auxiliary.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;

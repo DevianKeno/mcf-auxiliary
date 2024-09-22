@@ -2,7 +2,7 @@ package net.hm1.auxiliary.datagen.loot;
 
 import java.util.Set;
 import java.util.HashSet;
-import net.hm1.auxiliary.blocks.ModBlocks;
+import net.hm1.auxiliary.init.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;

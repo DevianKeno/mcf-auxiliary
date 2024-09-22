@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.mixin;
+package net.hm1.auxiliary.mixin.arsnouveau;
 
 import com.hollingsworth.arsnouveau.api.perk.*;
 import com.hollingsworth.arsnouveau.api.util.PerkUtil;
@@ -26,18 +26,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
+/*
+ * Needs the perkHolder instance to be ArmorPerkHolder for the ArmorPerkHolderMixin to work
+ */
 @Mixin({AlterationTable.class})
 public abstract class AlterationTableMixin
 {
     public AlterationTableMixin(){}
 
     @Redirect(
-        remap = false,
         method = "use",
         at = @At(
             value = "INVOKE",
-            target = "Lcom/hollingsworth/arsnouveau/common/block/tile/AlterationTile;addPerkStack(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)V")
-    )
+            target = "Lcom/hollingsworth/arsnouveau/common/block/tile/AlterationTile;addPerkStack(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)V"),
+        remap = false)
     private void auxiliary$redirectAddPerkStack(AlterationTile tile, ItemStack stack, Player player)
     {
         IPerkHolder<ItemStack> perkHolder = PerkUtil.getPerkHolder(tile.armorStack);

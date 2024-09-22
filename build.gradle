@@ -5,6 +5,7 @@ buildscript {
         maven { url = "https://plugins.gradle.org/m2/" }
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         mavenCentral()
+        flatDir { dirs 'libs' }
     }
 
     dependencies {
@@ -92,11 +93,26 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        forRepositories(fg.repository) // Only add this if you're using ForgeGradle, otherwise remove this line
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+    flatDir { dirs 'libs' }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // JEI
     implementation fg.deobf("curse.maven:jei-238222:5626488")
@@ -110,6 +126,8 @@ dependencies {
     implementation fg.deobf("curse.maven:ars-nouveau-401955:5600384")
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")
     implementation fg.deobf("curse.maven:ars-elemental-561470:5609198")
+
+    implementation fg.deobf("curse.maven:bigger-stacks-564896:4858160")
 
     // BOMD
     implementation fg.deobf("curse.maven:bomd-941573:5057880")
@@ -125,6 +143,9 @@ dependencies {
     implementation fg.deobf("curse.maven:lionfish_api-1001614:5363774")
     implementation fg.deobf("curse.maven:curios_api-309927:5680164")
 
+    // Create
+    implementation fg.deobf("curse.maven:create-328085:5689514")
+
     // Ice and Fire
     implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
 
@@ -135,6 +156,10 @@ dependencies {
 
     // Stalwart Dungeons
     implementation fg.deobf("curse.maven:stalwart_dungeons-474817:4703671")
+
+    // TACZ & Vic's Point Blank
+    implementation fg.deobf("curse.maven:timeless-and-classics-zero-1028108:5529117")
+    implementation fg.deobf("curse.maven:vics-point-blank-961053:5642788")
 
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

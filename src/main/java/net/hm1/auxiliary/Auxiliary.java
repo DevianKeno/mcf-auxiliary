@@ -1,12 +1,12 @@
 package net.hm1.auxiliary;
 
 import com.mojang.logging.LogUtils;
-import net.hm1.auxiliary.blocks.ModBlocks;
-import net.hm1.auxiliary.items.ModCreativeModTabs;
-import net.hm1.auxiliary.items.ModItems;
+import net.hm1.auxiliary.init.ModBlocks;
+import net.hm1.auxiliary.init.ModCreativeModTabs;
+import net.hm1.auxiliary.init.ModItems;
 import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
 import net.hm1.auxiliary.setup.registry.ArsNouveauAuxiliary;
-import net.hm1.auxiliary.villager.ModVillagers;
+import net.hm1.auxiliary.init.ModVillagers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,15 +37,15 @@ public class Auxiliary
         modEventBus.addListener(this::commonSetup);
         AuxiliaryConfig.register();
 
-        ModBlocks.BLOCKS.register(modEventBus);
-        ModItems.ITEMS.register(modEventBus);
-        ModCreativeModTabs.AUXILIARY_CREATIVE_TAB.register(modEventBus);
-        ModVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModCreativeModTabs.register(modEventBus);
+        ModVillagers.register(modEventBus);
         ArsNouveauAuxiliary.Registry.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
         //modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::postSetup);
-
     }
 
     private void setupAddons(final FMLCommonSetupEvent event)

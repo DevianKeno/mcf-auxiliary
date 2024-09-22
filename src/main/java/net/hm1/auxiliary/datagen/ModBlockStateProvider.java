@@ -1,7 +1,7 @@
 package net.hm1.auxiliary.datagen;
 
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.blocks.ModBlocks;
+import net.hm1.auxiliary.init.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;

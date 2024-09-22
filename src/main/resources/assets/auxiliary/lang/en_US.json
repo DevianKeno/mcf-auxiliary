@@ -1,23 +1,33 @@
 {
-  "item.auxiliary.destruction_catalyst": "§5Destruction Catalyst",
-  "item.auxiliary.stalwart_crystal": "§5Stalwart Crystal",
-  "item.auxiliary.cataclysmic_amalgamation": "§5Cataclysmic Amalgamation",
-  "item.auxiliary.auxiliarite_alloy": "Auxiliarite God Metal Alloy",
-  "item.auxiliary.unresearched_gun_schematic": "Unresearched Gun Schematic",
-  "item.auxiliary.researched_gun_schematic": "Researched Gun Schematic",
+  "ars_nouveau.not_threaded": "This armor is not yet Threaded",
+  "ars_nouveau.threadable_armor": "Can be Threaded",
+  "ars_nouveau.threaded": "Threaded",
 
+  "auxiliary.gun_schematic_researched": "Researched",
+  "auxiliary.gun_schematic_unresearched": "Not yet researched",
+  "auxiliary:nether_first_enter": "",
+
+  "block.auxiliary.block_of_auxiliarite": "Block of Auxiliarite Alloy",
   "block.auxiliary.gun_workbench": "Gun Workbench",
-  "item.auxiliary.block_of_auxiliarite": "Block of Auxiliarite Alloy",
+
+  "command.auxiliary.gunschematic.success": "Given schematic for gun",
+  "command.auxiliary.gunschematic.not_found": "Gun Id not found",
+  "command.auxiliary.gunschematic.invalid_type": "Invalid gun type",
 
   "creativetab.auxiliary_creative_tab": "Auxiliary",
 
-  "item.auxiliary.fulcaligr": "Fulcaligr",
+  "entity.minecraft.villager.auxiliary.gunsmith": "Gunsmith",
+
+  "item.auxiliary.auxiliarite_alloy": "Auxiliarite God Metal Alloy",
+  "item.auxiliary.block_of_auxiliarite": "Block of Auxiliarite Alloy",
+  "item.auxiliary.cataclysmic_amalgamation": "§5Cataclysmic Amalgamation",
+  "item.auxiliary.destruction_catalyst": "§5Destruction Catalyst",
+  "item.auxiliary.fulcaligr": "§5Fulcaligr",
+  "item.auxiliary.gun_schematic": "Gun Schematic",
+  "item.auxiliary.gun_workbench": "Gun Workbench",
+  "item.auxiliary.sentougahara": "§5Sentougahara",
+  "item.auxiliary.stalwart_crystal": "§5Stalwart Crystal",
+
   "tooltip.auxiliary.fulcaligr.tooltip": "§6Legendary sword go brrr",
-  "tooltip.auxiliary.god_alloy.tooltip": "It emits an inexplicable grounding aura. This metal is the result of the amalgamation of countless forbidden materials, yet it somehow still holds up.",
-
-  "auxiliary:nether_first_enter": "",
-
-  "ars_nouveau.threadable_armor": "Can be Threaded",
-  "ars_nouveau.threaded": "Threaded",
-  "ars_nouveau.not_threaded": "This armor is not yet Threaded"
+  "tooltip.auxiliary.god_alloy.tooltip": "It emits an inexplicable grounding aura. This metal is the result of the amalgamation of countless forbidden materials, yet it somehow still holds up."
 }

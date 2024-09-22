@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.items;
+package net.hm1.auxiliary.init;
 
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;

@@ -1,6 +1,5 @@
-package net.hm1.auxiliary.items;
+package net.hm1.auxiliary.init;
 
-import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
 import net.hm1.auxiliary.Auxiliary;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tier;
@@ -10,8 +9,6 @@ import net.minecraftforge.common.ForgeTier;
 import net.minecraftforge.common.TierSortingRegistry;
 
 import java.util.List;
-
-import static com.ibm.icu.text.PluralRules.Operand.f;
 
 public class ModTiers
 {

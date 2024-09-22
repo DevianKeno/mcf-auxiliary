@@ -20,6 +20,6 @@ public class ModPoiTypeTagsProvider extends PoiTypeTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        tag(PoiTypeTags.ACQUIRABLE_JOB_SITE).addOptional(new ResourceLocation(Auxiliary.MOD_ID, "gun_workbench_poi"));
+        tag(PoiTypeTags.ACQUIRABLE_JOB_SITE).addOptional(new ResourceLocation(Auxiliary.MOD_ID, "gunsmith_poi"));
     }
 }

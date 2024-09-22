@@ -1,5 +1,6 @@
 package net.hm1.auxiliary.items;
 
+import net.hm1.auxiliary.init.ModTiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;

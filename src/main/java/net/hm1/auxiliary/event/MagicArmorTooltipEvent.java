@@ -4,7 +4,7 @@ import com.hollingsworth.arsnouveau.api.perk.*;
 import com.hollingsworth.arsnouveau.api.registry.PerkRegistry;
 import com.hollingsworth.arsnouveau.api.util.RomanNumber;
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.items.ModTags;
+import net.hm1.auxiliary.init.ModTags;
 import net.hm1.auxiliary.setup.registry.ArsNouveauAuxiliary;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

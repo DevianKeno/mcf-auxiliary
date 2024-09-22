@@ -1,4 +1,5 @@
-// 1.20.1	2024-09-21T16:10:12.1601972	Tags for minecraft:item mod id auxiliary
+// 1.20.1	2024-09-23T00:49:55.5721139	Tags for minecraft:item mod id auxiliary
 7b19805b522bb42913c7ab2d26210800f75d68ae data/auxiliary/tags/items/armors/dragonsteel.json
 ee893331efff215f598545ad2bd878b84daf5b84 data/auxiliary/tags/items/armors/dragon_scale.json
 1425feec71f16405541407a8cfd84585098b3ed5 data/auxiliary/tags/items/armors/magic.json
+6a85cd170accf1a7e203cce7e183d605b983fa45 data/auxiliary/tags/items/gun.json

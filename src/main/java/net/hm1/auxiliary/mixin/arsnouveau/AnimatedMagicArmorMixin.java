@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.mixin;
+package net.hm1.auxiliary.mixin.arsnouveau;
 
 import com.hollingsworth.arsnouveau.common.armor.AnimatedMagicArmor;
 import net.minecraft.network.chat.Component;
@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
+/*
+ * Cancels tooltips to give way for Threaded tooltips
+ */
 @Mixin({AnimatedMagicArmor.class})
 public class AnimatedMagicArmorMixin
 {
@@ -21,8 +24,7 @@ public class AnimatedMagicArmorMixin
         method = {"appendHoverText"},
         at = {@At("HEAD")},
         cancellable = true,
-        remap = false
-    )
+        remap = false)
     public void auxiliary$appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag, CallbackInfo ci)
     {
         ci.cancel();
