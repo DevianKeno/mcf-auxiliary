@@ -31,6 +31,16 @@ description='''Supporting logic for Auxiliary modpack.'''
 # NONE means that no display test is set on your mod. You need to do this yourself, see IExtensionPoint.DisplayTest for more information. You can define any scheme you wish with this value.
 # IMPORTANT NOTE: this is NOT an instruction as to which environments (CLIENT or DEDICATED SERVER) your mod loads on. Your mod should load (and maybe do nothing!) whereever it finds itself.
 #displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
+[[mods]]
+modId="bossfightstats"
+version="1.20-1.0.0"
+displayName="Boss Fight Statistics"
+#updateJSONURL="" #optional
+displayURL="https://github.com/DevianKeno/mcf-auxiliary" #optional
+logoFile="bfs.png" #optional
+credits=""
+authors="deviankeno" #optional
+description='''Tracks various statistics during boss fights to compete with your friends.'''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.auxiliary]] #optional
