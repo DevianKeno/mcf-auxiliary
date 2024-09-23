@@ -41,7 +41,7 @@ public class AbstractSpellMixin
                 multiplier = etty.getAttributeValue(ironsAttr);
             }
             float damage = cir.getReturnValue();
-            cir.setReturnValue((float) (damage + (flatBonus * multiplier)));
+            cir.setReturnValue((float) ((damage * multiplier) + (flatBonus * multiplier)));
         }
     }
 }
