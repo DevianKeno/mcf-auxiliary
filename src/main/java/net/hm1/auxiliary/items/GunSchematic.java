@@ -1,6 +1,8 @@
 package net.hm1.auxiliary.items;
 
 import com.tacz.guns.api.DefaultAssets;
+import com.tacz.guns.api.TimelessAPI;
+import com.vicmatskiv.pointblank.registry.GunRegistry;
 import net.hm1.auxiliary.init.ModItems;
 import net.hm1.auxiliary.setup.registry.GunsRegistry;
 import net.minecraft.ChatFormatting;
@@ -9,8 +11,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
@@ -18,7 +22,7 @@ public class GunSchematic extends Item
 {
     public static final String GUN_ID_TAG = "GunId";
     public static final String RESEARCHED_TAG = "Researched";
-    public static final ResourceLocation EMPTY_GUN_ID = DefaultAssets.EMPTY_GUN_ID;
+    public static final ResourceLocation EMPTY_GUN_ID = new ResourceLocation("auxiliary", "empty");;
 
     public GunSchematic()
     {
@@ -54,8 +58,7 @@ public class GunSchematic extends Item
         if (!isGunSchematicItem(stack)) return EMPTY_GUN_ID;
 
         CompoundTag nbt = stack.getOrCreateTag();
-        if (nbt.contains(GUN_ID_TAG))
-        {
+        if (nbt.contains(GUN_ID_TAG)) {
             return new ResourceLocation(nbt.getString(GUN_ID_TAG));
         }
         return EMPTY_GUN_ID;
@@ -88,8 +91,18 @@ public class GunSchematic extends Item
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags)
     {
-        ResourceLocation gunId = getGunId(stack);
-        tooltip.add(Component.literal(gunId.toString()).withStyle(ChatFormatting.GOLD));
+        String gunName = GunsRegistry.UNKNOWN_GUN;
+        var resourceLocation = getGunId(stack);
+        if (resourceLocation.getNamespace().equals(com.tacz.guns.GunMod.MOD_ID)) {
+            var gunIndex = TimelessAPI.getClientGunIndex(resourceLocation);
+            if (gunIndex.isPresent()) gunName = gunIndex.get().getName();
+        } else if (resourceLocation.getNamespace().equals(com.vicmatskiv.pointblank.PointBlankMod.MODID)) {
+            var item = ForgeRegistries.ITEMS.getValue(resourceLocation);
+            if (item instanceof com.vicmatskiv.pointblank.item.GunItem pbg) {
+                gunName = String.format("item.pointblank.%s", pbg.getName());
+            }
+        }
+        tooltip.add(Component.translatable(gunName).withStyle(ChatFormatting.GOLD));
 
         if (isResearched(stack)) {
             tooltip.add(Component.translatable("auxiliary.gun_schematic_researched").withStyle(ChatFormatting.GREEN));

@@ -12,6 +12,7 @@ public class GunsRegistry
 {
     public enum GunTypes { HANDGUN, SUBMACHINE_GUN, SHOTGUN, ASSAULT_RIFLE, SNIPER_RIFLE, DESIGNATED_MARKSMAN_RIFLE, MACHINE_GUN, SPECIAL }
     public enum Source { TACZ, POINTBLANK }
+    public static final String UNKNOWN_GUN = "Unknown Gun";
 
     public static class TACZ
     {
