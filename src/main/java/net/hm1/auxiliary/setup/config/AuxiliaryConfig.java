@@ -29,6 +29,13 @@ public class AuxiliaryConfig
         public static ForgeConfigSpec.BooleanValue MAGIC_ARMOR_IS_THREADABLE;
     }
 
+    public static class SpellPower
+    {
+        public enum BoostType { ADD, MULTIPLY }
+        public static ForgeConfigSpec.BooleanValue USE_ARS_SP_FOR_IRONS;
+    }
+
+
     public static Map<GunsRegistry.GunTypes, ForgeConfigSpec.IntValue> GUNTYPE_SCHEMATIC_PRICES = new HashMap<>();
     private static final Map<GunsRegistry.GunTypes, Integer> DEFAULT_GUNTYPE_SCHEMATIC_PRICES = new HashMap<>();
     static {

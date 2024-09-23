@@ -7,6 +7,7 @@
     "arsnouveau.AlterationTableMixin",
     "arsnouveau.AnimatedMagicArmorMixin",
     "arsnouveau.ArmorPerkHolderMixin",
+    "ironsspellbooks.AbstractSpellMixin",
     "pointblank.GunItemBuilderMixin"
   ],
   "injectors": {

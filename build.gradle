@@ -158,6 +158,8 @@ dependencies {
     implementation fg.deobf("curse.maven:caelus-308989:5281700")
     implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
 
+    implementation fg.deobf("curse.maven:mana-unification-1083306:5729342")
+
     // Stalwart Dungeons
     implementation fg.deobf("curse.maven:stalwart_dungeons-474817:4703671")
 
