@@ -58,7 +58,7 @@ minecraft {
 
         client {
             property 'forge.enabledGameTestNamespaces', mod_id
-            arg "-mixin.config=auxiliary.mixins.json"
+            arg "mixin.config=auxiliary.mixins.json"
         }
 
         server {
@@ -112,64 +112,51 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
+    implementation fg.deobf("curse.maven:sinytra-connector-890127:5605667")
+    implementation fg.deobf("curse.maven:forgified-fabric-api-889079:5387432")
+    implementation fg.deobf("curse.maven:connector-extras-913445:5490637")
+
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // JEI
-    implementation fg.deobf("curse.maven:jei-238222:5626488")
-    implementation fg.deobf("curse.maven:jei-integration-265917:4999754")
-
-    // Alex's Caves
+    //#region Core
     implementation fg.deobf("curse.maven:alexscaves-924854:5633305")
-    implementation fg.deobf("curse.maven:citadel-331936:5633260")
-
-    // Apothic Attributes
+    implementation fg.deobf("curse.maven:apotheosis-313970:5642736")
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5634071")
-    implementation fg.deobf("curse.maven:placebo-283644:5414631")
-
-    // Ars Nouveau
-    implementation fg.deobf("curse.maven:ars-nouveau-401955:5600384")
-    implementation fg.deobf("curse.maven:patchouli-306770:4966125")
+    implementation fg.deobf("curse.maven:apothic-curios-950712:5497444")
     implementation fg.deobf("curse.maven:ars-elemental-561470:5609198")
-
-    implementation fg.deobf("curse.maven:bigger-stacks-564896:4858160")
-
-    // BOMD
+    implementation fg.deobf("curse.maven:ars-nouveau-401955:5600384")
     implementation fg.deobf("curse.maven:bomd-941573:5057880")
-    implementation fg.deobf("curse.maven:cerbons-api-955605:4992038")
-    implementation fg.deobf("curse.maven:cloth_config-348521:5729105")
-
-    // Born in Chaos
     implementation fg.deobf("curse.maven:born_in_chaos-686437:5369688")
-    implementation fg.deobf("curse.maven:geckolib-388172:5675221")
-
-    // Cataclysm
     implementation fg.deobf("curse.maven:cataclysm-551586:5409421")
-    implementation fg.deobf("curse.maven:lionfish_api-1001614:5363774")
-    implementation fg.deobf("curse.maven:curios_api-309927:5680164")
-
-    // Create
     implementation fg.deobf("curse.maven:create-328085:5689514")
-
-    // Ice and Fire
+    implementation fg.deobf("curse.maven:curios-309927:5680164")
     implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
-
-    // Iron's Spells and Spellbooks
     implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:5616394")
-    implementation fg.deobf("curse.maven:caelus-308989:5281700")
-    implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
-
-    implementation fg.deobf("curse.maven:mana-unification-1083306:5729342")
-
-    // Stalwart Dungeons
+    implementation fg.deobf("curse.maven:puffish-attributes-991341:5535410")
+    implementation fg.deobf("curse.maven:puffish-skills-835091:5551784")
+    implementation fg.deobf("curse.maven:puffish-skills-default-1074229:5587013")
     implementation fg.deobf("curse.maven:stalwart_dungeons-474817:4703671")
-
-    // TACZ & Vic's Point Blank
     implementation fg.deobf("curse.maven:timeless-and-classics-zero-1028108:5529117")
     implementation fg.deobf("curse.maven:vics-point-blank-961053:5642788")
+    //#endregion
 
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    //#region Libs
+    implementation fg.deobf("curse.maven:bigger-stacks-564896:4858160")
+    implementation fg.deobf("curse.maven:caelus-308989:5281700")
+    implementation fg.deobf("curse.maven:cerbons-api-955605:4992038")
+    implementation fg.deobf("curse.maven:citadel-331936:5633260")
+    implementation fg.deobf("curse.maven:cloth_config-348521:5729105")
+    implementation fg.deobf("curse.maven:curios_api-309927:5680164")
+    implementation fg.deobf("curse.maven:geckolib-388172:5675221")
+    implementation fg.deobf("curse.maven:item-production-lib-950401:5114036")
+    implementation fg.deobf("curse.maven:jei-238222:5626488")
+    implementation fg.deobf("curse.maven:jei-integration-265917:4999754")
+    implementation fg.deobf("curse.maven:lionfish_api-1001614:5363774")
+    implementation fg.deobf("curse.maven:mana-unification-1083306:5729342")
+    implementation fg.deobf("curse.maven:patchouli-306770:4966125")
+    implementation fg.deobf("curse.maven:placebo-283644:5414631")
+    implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
+    //#endregio
 }
 
 tasks.named('processResources', ProcessResources).configure {
