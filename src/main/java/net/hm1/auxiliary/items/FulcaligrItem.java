@@ -3,7 +3,7 @@ package net.hm1.auxiliary.items;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import net.hm1.auxiliary.init.ModTiers;
+import net.hm1.auxiliary.registry.Tiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.*;
@@ -15,7 +15,7 @@ public class FulcaligrItem extends SwordItem
     public FulcaligrItem()
     {
         super(
-            ModTiers.AUXILIARITE,
+            Tiers.AUXILIARITE,
             46,
             -2.4f,
             new Item.Properties()

@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.init;
+package net.hm1.auxiliary.registry;
 
 import net.hm1.auxiliary.Auxiliary;
 import net.minecraft.core.registries.Registries;
@@ -10,7 +10,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModCreativeModTabs {
+public class CreativeTabs
+{
     public static final DeferredRegister<CreativeModeTab> AUXILIARY_CREATIVE_TAB =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Auxiliary.MOD_ID);
 
@@ -23,10 +24,10 @@ public class ModCreativeModTabs {
         AUXILIARY_CREATIVE_TAB.register("auxiliary_creative_tab", () ->
             CreativeModeTab.builder()
                 .title(Component.translatable("creativetab.auxiliary_creative_tab"))
-                .icon(() -> new ItemStack(ModItems.AUXILIARITE_ALLOY.get()))
+                .icon(() -> new ItemStack(Items.AUXILIARITE_ALLOY.get()))
                 .displayItems((pParameters, pOutput) ->
                 {
-                    for (RegistryObject<Item> item : ModItems.ITEMS.getEntries())
+                    for (RegistryObject<Item> item : Items.ITEMS.getEntries())
                     {
                         pOutput.accept(item.get());
                     }

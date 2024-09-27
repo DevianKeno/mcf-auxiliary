@@ -1,7 +1,7 @@
 package net.hm1.auxiliary.datagen;
 
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.init.ModItems;
+import net.hm1.auxiliary.registry.Items;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -20,14 +20,14 @@ public class ModItemModelProvider extends ItemModelProvider
     @Override
     protected void registerModels()
     {
-        simpleItem(ModItems.AUXILIARITE_ALLOY);
-        simpleItem(ModItems.CATACLYSMIC_AMALGAMATION);
-        simpleItem(ModItems.DESTRUCTION_CATALYST);
-        simpleItem(ModItems.STALWART_CRYSTAL);
-        gunSchematicItem(ModItems.GUN_SCHEMATIC);
+        simpleItem(Items.AUXILIARITE_ALLOY);
+        simpleItem(Items.CATACLYSMIC_AMALGAMATION);
+        simpleItem(Items.DESTRUCTION_CATALYST);
+        simpleItem(Items.STALWART_CRYSTAL);
+        gunSchematicItem(Items.GUN_SCHEMATIC);
 
-        handheldItem(ModItems.FULCALIGR);
-        handheldItem(ModItems.SENTOUGAHARA);
+        handheldItem(Items.FULCALIGR);
+        handheldItem(Items.SENTOUGAHARA);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item)

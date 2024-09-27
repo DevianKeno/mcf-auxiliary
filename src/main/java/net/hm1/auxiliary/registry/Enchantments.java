@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.init;
+package net.hm1.auxiliary.registry;
 
 import net.hm1.auxiliary.Auxiliary;
 import net.hm1.auxiliary.enchantment.BallisticsEnchantment;
@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModEnchantments
+public class Enchantments
 {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, Auxiliary.MOD_ID);
     public static final RegistryObject<Enchantment>

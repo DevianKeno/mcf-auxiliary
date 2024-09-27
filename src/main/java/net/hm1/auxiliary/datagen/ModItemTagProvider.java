@@ -2,7 +2,7 @@ package net.hm1.auxiliary.datagen;
 
 import net.hm1.auxiliary.Auxiliary;
 import net.hm1.auxiliary.armor.MagicArmor;
-import net.hm1.auxiliary.init.ModTags;
+import net.hm1.auxiliary.registry.Tags;
 import net.hm1.auxiliary.setup.registry.GunsRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -22,7 +22,7 @@ public class ModItemTagProvider extends ItemTagsProvider
 {
     public ModItemTagProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, ExistingFileHelper existingFileHelper)
     {
-        super(packOutput, lookupProvider, blockTags, ModTags.FORGE_ID, existingFileHelper);
+        super(packOutput, lookupProvider, blockTags, Tags.FORGE_ID, existingFileHelper);
     }
 
     @Override
@@ -35,31 +35,31 @@ public class ModItemTagProvider extends ItemTagsProvider
         for (var color : Auxiliary.ICEANDFIRE_DRAGON_SCALE_COLORS)
             for (var piece : Auxiliary.ARMOR_PIECES)
             {
-                tagId(ModTags.DRAGON_SCALE_ARMOR, String.format("iceandfire:armor_%s_%s", color, piece));
+                tagId(Tags.DRAGON_SCALE_ARMOR, String.format("iceandfire:armor_%s_%s", color, piece));
             }
 
         /// Dragonsteel Armor
         for (var set : Auxiliary.ICEANDFIRE_DRAGONSTEEL_SET)
             for (var piece : Auxiliary.ARMOR_PIECES)
             {
-                tagId(ModTags.DRAGONSTEEL_ARMOR, String.format("iceandfire:dragonsteel_%s_%s", set, piece));
+                tagId(Tags.DRAGONSTEEL_ARMOR, String.format("iceandfire:dragonsteel_%s_%s", set, piece));
             }
 
         /// Guns
         /// TACZ
-        tagId(ModTags.GUN, String.format("%s:modern_kinetic_gun", com.tacz.guns.GunMod.MOD_ID));
+        tagId(Tags.GUN, String.format("%s:modern_kinetic_gun", com.tacz.guns.GunMod.MOD_ID));
         /// Pointblank
         for (var type : GunsRegistry.GunTypes.values())
             for (var id : GunsRegistry.Pointblank.getIdsOf(type))
             {
-                tagId(ModTags.GUN, String.format("%s:%s", com.vicmatskiv.pointblank.PointBlankMod.MODID, id));
+                tagId(Tags.GUN, String.format("%s:%s", com.vicmatskiv.pointblank.PointBlankMod.MODID, id));
             }
 
         /// Limestone
-        tagIdList(ModTags.LIMESTONE, List.of(new String[]{ "alexscaves:limestone", "create:limestone", "quark:limestone" }));
+        tagIdList(Tags.LIMESTONE, List.of(new String[]{ "alexscaves:limestone", "create:limestone", "quark:limestone" }));
 
         /// Magic Armor
-        tagIdList(ModTags.MAGIC_ARMOR, MagicArmor.ALL_IDS);
+        tagIdList(Tags.MAGIC_ARMOR, MagicArmor.ALL_IDS);
     }
 
     void tagCoreMaterial()
@@ -90,12 +90,12 @@ public class ModItemTagProvider extends ItemTagsProvider
         };
 
         for (var id : items)
-            tagId(ModTags.CORE_MATERIAL, id);
+            tagId(Tags.CORE_MATERIAL, id);
     }
 
     void tagDragonScaleItem()
     {
-        tagId(ModTags.DRAGON_SCALES, "irons_spellbooks:dragonskin" );
+        tagId(Tags.DRAGON_SCALES, "irons_spellbooks:dragonskin" );
     }
 
     public void tagId(TagKey<Item> tagKey, String id)

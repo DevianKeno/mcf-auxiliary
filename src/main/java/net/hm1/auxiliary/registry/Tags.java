@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.init;
+package net.hm1.auxiliary.registry;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -7,7 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-public class ModTags
+public class Tags
 {
     public static final String FORGE_ID = "forge";
     public static final TagKey<Item> CLASS_RANGER = tagItem("classes/ranger");

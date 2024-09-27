@@ -1,6 +1,5 @@
 package net.hm1.auxiliary.datagen;
 
-import com.hollingsworth.arsnouveau.common.datagen.ItemTagProvider;
 import net.hm1.auxiliary.Auxiliary;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;

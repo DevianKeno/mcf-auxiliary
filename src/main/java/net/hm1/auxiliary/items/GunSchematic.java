@@ -1,9 +1,7 @@
 package net.hm1.auxiliary.items;
 
-import com.tacz.guns.api.DefaultAssets;
 import com.tacz.guns.api.TimelessAPI;
-import com.vicmatskiv.pointblank.registry.GunRegistry;
-import net.hm1.auxiliary.init.ModItems;
+import net.hm1.auxiliary.registry.Items;
 import net.hm1.auxiliary.setup.registry.GunsRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +9,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -36,7 +33,7 @@ public class GunSchematic extends Item
 
     public static ItemStack of(String gunId, boolean isResearched)
     {
-        ItemStack schem = new ItemStack(ModItems.GUN_SCHEMATIC.get());
+        ItemStack schem = new ItemStack(Items.GUN_SCHEMATIC.get());
         CompoundTag nbt = schem.getOrCreateTag();
         nbt.putString(GUN_ID_TAG, gunId);
         nbt.putBoolean(RESEARCHED_TAG, isResearched);
@@ -85,7 +82,7 @@ public class GunSchematic extends Item
 
     static boolean isGunSchematicItem(ItemStack stack)
     {
-        return stack.getItem() == ModItems.GUN_SCHEMATIC.get();
+        return stack.getItem() == Items.GUN_SCHEMATIC.get();
     }
 
     @Override

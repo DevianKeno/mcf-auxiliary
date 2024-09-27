@@ -1,12 +1,11 @@
 package net.hm1.auxiliary.datagen;
 
-import net.hm1.auxiliary.init.ModBlocks;
-import net.hm1.auxiliary.init.ModItems;
+import net.hm1.auxiliary.registry.Blocks;
+import net.hm1.auxiliary.registry.Items;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -27,13 +26,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CORE_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CORE_ITEM.get())
             .pattern("AAA")
             .pattern("AEA")
             .pattern("AAA")
-            .define('E', Items.ENDER_EYE)
-            .define('A', ModItems.AUXILIARITE_ALLOY.get())
-            .unlockedBy(getHasName(ModItems.AUXILIARITE_ALLOY.get()), has(ModItems.AUXILIARITE_ALLOY.get()))
+            .define('E', net.minecraft.world.item.Items.ENDER_EYE)
+            .define('A', Items.AUXILIARITE_ALLOY.get())
+            .unlockedBy(getHasName(Items.AUXILIARITE_ALLOY.get()), has(Items.AUXILIARITE_ALLOY.get()))
             .save(pWriter);
 
         //region DESTRUCTION_CATALYST
@@ -43,7 +42,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         final Item OBSIDIAN_HEART = ForgeRegistries.ITEMS.getValue(new ResourceLocation(bomd, "obsidian_heart"));
         final Item ANCIENT_ANIMA = ForgeRegistries.ITEMS.getValue(new ResourceLocation(bomd, "ancient_anima"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DESTRUCTION_CATALYST.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.DESTRUCTION_CATALYST.get(), 1)
             .pattern(" E ")
             .pattern("VNO")
             .pattern(" A ")
@@ -52,7 +51,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('N', BRIMSTONE_NECTAR)
             .define('O', OBSIDIAN_HEART)
             .define('A', ANCIENT_ANIMA)
-            .unlockedBy(getHasName(ModItems.AUXILIARITE_ALLOY.get()), has(ModItems.AUXILIARITE_ALLOY.get()))
+            .unlockedBy(getHasName(Items.AUXILIARITE_ALLOY.get()), has(Items.AUXILIARITE_ALLOY.get()))
             .save(pWriter);
         //endregion
 
@@ -63,7 +62,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         final Item CHORUNDUM = ForgeRegistries.ITEMS.getValue(new ResourceLocation(sd, "chorundum"));
         final Item ANCIENT_FIRE = ForgeRegistries.ITEMS.getValue(new ResourceLocation(sd, "ancient_fire"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STALWART_CRYSTAL.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.STALWART_CRYSTAL.get(), 1)
             .pattern(" A ")
             .pattern("TVC")
             .pattern(" F ")
@@ -72,7 +71,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('V', VOID_CRYSTAL)
             .define('C', CHORUNDUM)
             .define('F', ANCIENT_FIRE)
-            .unlockedBy(getHasName(ModItems.AUXILIARITE_ALLOY.get()), has(ModItems.AUXILIARITE_ALLOY.get()))
+            .unlockedBy(getHasName(Items.AUXILIARITE_ALLOY.get()), has(Items.AUXILIARITE_ALLOY.get()))
             .save(pWriter);
         //endregion
 
@@ -83,7 +82,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         final Item VOID_CORE = ForgeRegistries.ITEMS.getValue(new ResourceLocation(cataclysm, "void_core"));
         final Item ABYSSAL_EGG = ForgeRegistries.ITEMS.getValue(new ResourceLocation(cataclysm, "abyssal_egg"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CATACLYSMIC_AMALGAMATION.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CATACLYSMIC_AMALGAMATION.get(), 1)
             .pattern(" H ")
             .pattern("WAV")
             .pattern(" E ")
@@ -92,22 +91,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('A', BURNING_ASHES)
             .define('V', VOID_CORE)
             .define('E', ABYSSAL_EGG)
-            .unlockedBy(getHasName(ModItems.AUXILIARITE_ALLOY.get()), has(ModItems.AUXILIARITE_ALLOY.get()))
+            .unlockedBy(getHasName(Items.AUXILIARITE_ALLOY.get()), has(Items.AUXILIARITE_ALLOY.get()))
             .save(pWriter);
         //endregion
 
         //region Auxiliarite Alloy recipes
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.AUXILIARITE_ALLOY_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Blocks.AUXILIARITE_ALLOY_BLOCK.get())
             .pattern("AAA")
             .pattern("AAA")
             .pattern("AAA")
-            .define('A', ModItems.AUXILIARITE_ALLOY.get())
-            .unlockedBy(getHasName(ModItems.AUXILIARITE_ALLOY.get()), has(ModItems.AUXILIARITE_ALLOY.get()))
+            .define('A', Items.AUXILIARITE_ALLOY.get())
+            .unlockedBy(getHasName(Items.AUXILIARITE_ALLOY.get()), has(Items.AUXILIARITE_ALLOY.get()))
             .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AUXILIARITE_ALLOY.get(), 9)
-            .requires(ModBlocks.AUXILIARITE_ALLOY_BLOCK.get())
-            .unlockedBy(getHasName(ModBlocks.AUXILIARITE_ALLOY_BLOCK.get()), has(ModBlocks.AUXILIARITE_ALLOY_BLOCK.get()))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.AUXILIARITE_ALLOY.get(), 9)
+            .requires(Blocks.AUXILIARITE_ALLOY_BLOCK.get())
+            .unlockedBy(getHasName(Blocks.AUXILIARITE_ALLOY_BLOCK.get()), has(Blocks.AUXILIARITE_ALLOY_BLOCK.get()))
             .save(pWriter);
         //endregion
     }

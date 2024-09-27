@@ -1,6 +1,6 @@
 package net.hm1.auxiliary.items;
 
-import net.hm1.auxiliary.init.ModTiers;
+import net.hm1.auxiliary.registry.Tiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +17,7 @@ public class SentougaharaItem extends SwordItem
     public SentougaharaItem()
     {
         super(
-            ModTiers.AUXILIARITE,
+            Tiers.AUXILIARITE,
             46,
             3.5f,
             new Properties()

@@ -1,12 +1,11 @@
 package net.hm1.auxiliary;
 
 import com.mojang.logging.LogUtils;
-import net.hm1.auxiliary.init.*;
+import net.hm1.auxiliary.registry.*;
 import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
 import net.hm1.auxiliary.setup.registry.ArsNouveauAuxiliary;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,13 +31,14 @@ public class Auxiliary
     {
         AuxiliaryConfig.register();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         modEventBus.addListener(this::commonSetup);
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
-        ModEnchantments.register(modEventBus);
-        ModVillagers.register(modEventBus);
+        Items.register(modEventBus);
+        Blocks.register(modEventBus);
+        Enchantments.register(modEventBus);
+        Villagers.register(modEventBus);
         ArsNouveauAuxiliary.Registry.register(modEventBus);
-        ModCreativeModTabs.register(modEventBus);
+        CreativeTabs.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::postSetup);
     }

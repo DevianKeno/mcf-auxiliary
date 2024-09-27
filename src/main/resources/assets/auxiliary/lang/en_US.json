@@ -4,11 +4,21 @@
   "ars_nouveau.threaded": "Threaded",
 
   "attribute.name.auxiliary.bullet_damage": "Bullet Damage",
-  "attribute.name.auxiliary.bullet_damage.desc": "Damage multiplier for bullets!",
+  "attribute.name.auxiliary.bullet_damage.desc": "Damage multiplier for bullets.",
+
+  "attribute.name.irons_spellbooks.cast_time_reduction": "Spell Haste",
+  "attribute.name.irons_spellbooks.spell_power": "Magic Damage",
+  "attribute.name.irons_spellbooks.spell_resist": "Magic Protection",
+
+  "attribute.name.spell_power.critical_chance": "Magic Crit Chance",
+  "attribute.name.spell_power.critical_damage": "Magic Crit Damage",
+
+  "attribute.name.minecraft.generic.movement_speed": "Movement Speed",
 
   "auxiliary.gun_schematic_researched": "Researched",
   "auxiliary.gun_schematic_unresearched": "Not yet researched",
-  "auxiliary:nether_first_enter": "",
+
+  "auxiliary.message.nether_first_enter": "",
 
   "block.auxiliary.block_of_auxiliarite": "Block of Auxiliarite Alloy",
   "block.auxiliary.gun_workbench": "Gun Workbench",

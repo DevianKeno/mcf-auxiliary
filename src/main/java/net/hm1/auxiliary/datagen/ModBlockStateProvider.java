@@ -1,7 +1,7 @@
 package net.hm1.auxiliary.datagen;
 
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.init.ModBlocks;
+import net.hm1.auxiliary.registry.Blocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -18,7 +18,7 @@ public class ModBlockStateProvider extends BlockStateProvider
     @Override
     protected void registerStatesAndModels()
     {
-        blockWithItem(ModBlocks.AUXILIARITE_ALLOY_BLOCK);
+        blockWithItem(Blocks.AUXILIARITE_ALLOY_BLOCK);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject)

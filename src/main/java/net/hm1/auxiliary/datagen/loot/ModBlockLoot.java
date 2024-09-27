@@ -2,7 +2,7 @@ package net.hm1.auxiliary.datagen.loot;
 
 import java.util.Set;
 import java.util.HashSet;
-import net.hm1.auxiliary.init.ModBlocks;
+import net.hm1.auxiliary.registry.Blocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -20,7 +20,7 @@ public class ModBlockLoot extends BlockLootSubProvider
     @Override
     protected void generate()
     {
-        dropSelf(ModBlocks.AUXILIARITE_ALLOY_BLOCK.get());
+        dropSelf(Blocks.AUXILIARITE_ALLOY_BLOCK.get());
     }
 
     @Override

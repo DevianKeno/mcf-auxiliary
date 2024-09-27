@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = Auxiliary.MOD_ID)
-public class AttributesHandler
+public class ItemAttributesHandler
 {
     static final UUID[] SLOT_UUIDS = new UUID[]{
         UUID.fromString("D8499B04-0E66-4A16-9D6D-358E75F15C12"), // HELMET

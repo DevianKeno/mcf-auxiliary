@@ -30,18 +30,12 @@ public class AbstractSpellMixin
         if (sourceEntity == null) return;
         var etty = (LivingEntity) sourceEntity;
         var anAttr = com.hollingsworth.arsnouveau.api.perk.PerkAttributes.SPELL_DAMAGE_BONUS.get();
-        var ironsAttr = io.redspace.ironsspellbooks.api.registry.AttributeRegistry.SPELL_POWER.get();
 
         if (etty.getAttributes().hasAttribute(anAttr))
         {
             double flatBonus = etty.getAttributeValue(anAttr);
-            double multiplier = 1.0d;
-            if (etty.getAttributes().hasAttribute(ironsAttr))
-            {
-                multiplier = etty.getAttributeValue(ironsAttr);
-            }
             float damage = cir.getReturnValue();
-            cir.setReturnValue((float) ((damage * multiplier) + (flatBonus * multiplier)));
+            cir.setReturnValue((float) (damage + flatBonus));
         }
     }
 }

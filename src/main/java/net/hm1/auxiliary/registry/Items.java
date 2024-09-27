@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.init;
+package net.hm1.auxiliary.registry;
 
 import net.hm1.auxiliary.Auxiliary;
 import net.hm1.auxiliary.items.*;
@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModItems
+public class Items
 {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Auxiliary.MOD_ID);
     public static final RegistryObject<Item>

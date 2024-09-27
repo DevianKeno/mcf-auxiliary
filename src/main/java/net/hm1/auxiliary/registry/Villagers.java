@@ -1,4 +1,4 @@
-package net.hm1.auxiliary.init;
+package net.hm1.auxiliary.registry;
 
 import com.google.common.collect.ImmutableSet;
 import net.hm1.auxiliary.Auxiliary;
@@ -10,7 +10,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModVillagers {
+public class Villagers
+{
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, Auxiliary.MOD_ID);
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS = DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, Auxiliary.MOD_ID);
 

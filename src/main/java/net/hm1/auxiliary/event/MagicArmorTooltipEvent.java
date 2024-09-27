@@ -4,7 +4,7 @@ import com.hollingsworth.arsnouveau.api.perk.*;
 import com.hollingsworth.arsnouveau.api.registry.PerkRegistry;
 import com.hollingsworth.arsnouveau.api.util.RomanNumber;
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.init.ModTags;
+import net.hm1.auxiliary.registry.Tags;
 import net.hm1.auxiliary.setup.registry.ArsNouveauAuxiliary;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -25,7 +25,7 @@ public class MagicArmorTooltipEvent
     @OnlyIn(Dist.CLIENT)
     public static void onItemTooltip(ItemTooltipEvent event)
     {
-        if (!event.getItemStack().is(ModTags.MAGIC_ARMOR)) return;
+        if (!event.getItemStack().is(Tags.MAGIC_ARMOR)) return;
 
         appendHoverText(event.getItemStack(), event.getToolTip(), event.getFlags());
     }

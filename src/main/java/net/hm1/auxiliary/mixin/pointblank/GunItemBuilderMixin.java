@@ -29,15 +29,7 @@ public class GunItemBuilderMixin
         remap = false)
     private void auxiliary$overrideDefaultAttachments(Supplier<? extends Attachment>[] attachmentSuppliers, CallbackInfoReturnable<GunItem.Builder> cir)
     {
-        boolean cancel;
-        try
-        {
-            cancel = AuxiliaryConfig.NO_ATTACHMENTS_ON_CRAFTED_GUNS.get();
-        }
-        catch (Exception e)
-        {
-            cancel = true;
-        }
+        boolean cancel = AuxiliaryConfig.NO_ATTACHMENTS_ON_CRAFTED_GUNS.get();
         cir.setReturnValue((GunItem.Builder)(Object) this);
         if (cancel) cir.cancel();
     }
