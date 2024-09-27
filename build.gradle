@@ -143,7 +143,7 @@ dependencies {
     implementation fg.deobf("curse.maven:geckolib-388172:5675221")
     implementation fg.deobf("curse.maven:jei-238222:5626488")
     implementation fg.deobf("curse.maven:jei-integration-265917:4999754")
-    implementation fg.deobf("curse.maven:lionfish_api-1001614:5363774"))
+    implementation fg.deobf("curse.maven:lionfish_api-1001614:5363774")
     implementation fg.deobf("curse.maven:mana-unification-1083306:5729342")
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")
     implementation fg.deobf("curse.maven:placebo-283644:5414631")
