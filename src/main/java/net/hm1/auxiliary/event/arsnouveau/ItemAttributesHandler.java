@@ -1,29 +1,19 @@
-package net.hm1.auxiliary.init;
-
-import java.util.List;
+package net.hm1.auxiliary.event;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.hollingsworth.arsnouveau.api.perk.*;
 import com.hollingsworth.arsnouveau.api.util.PerkUtil;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.hm1.auxiliary.Auxiliary;
-import net.hm1.auxiliary.init.ModItems;
 import net.hm1.auxiliary.init.ModTags;
-import net.hm1.auxiliary.init.ModVillagers;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = Auxiliary.MOD_ID)
-public class ModEvents
+public class EventHandler
 {
     @SubscribeEvent
     public static void onItemAttributeModifier(ItemAttributeModifierEvent event)
