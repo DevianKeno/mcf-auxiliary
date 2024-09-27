@@ -116,7 +116,7 @@ dependencies {
     implementation fg.deobf("curse.maven:forgified-fabric-api-889079:5387432")
     implementation fg.deobf("curse.maven:connector-extras-913445:5490637")
 
-//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //#region Core
     implementation fg.deobf("curse.maven:alexscaves-924854:5633305")
@@ -133,7 +133,6 @@ dependencies {
     implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
     implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:5616394")
     implementation fg.deobf("curse.maven:puffish-attributes-991341:5535410")
-    implementation fg.deobf("curse.maven:puffish-skills-835091:5551784")
     implementation fg.deobf("curse.maven:puffish-skills-default-1074229:5587013")
     implementation fg.deobf("curse.maven:stalwart_dungeons-474817:4703671")
     implementation fg.deobf("curse.maven:timeless-and-classics-zero-1028108:5529117")

@@ -5,7 +5,7 @@ import net.hm1.auxiliary.init.ModItems;
 import net.hm1.auxiliary.init.ModVillagers;
 import net.hm1.auxiliary.items.GunSchematic;
 import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
-import net.hm1.auxiliary.utils.Itemf;
+import net.hm1.auxiliary.utils.Utils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -108,7 +108,7 @@ public class VillagerEvent
 
             new MerchantOffer(
                 item(Items.EMERALD, 50),
-                item(Itemf.item("create:precision_mechanism"), 1),
+                item(Utils.item("create:precision_mechanism"), 1),
                 4, 10, 0.02f),
 
             new MerchantOffer(

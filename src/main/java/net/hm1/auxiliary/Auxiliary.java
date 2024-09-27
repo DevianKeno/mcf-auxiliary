@@ -1,12 +1,9 @@
 package net.hm1.auxiliary;
 
 import com.mojang.logging.LogUtils;
-import net.hm1.auxiliary.init.ModBlocks;
-import net.hm1.auxiliary.init.ModCreativeModTabs;
-import net.hm1.auxiliary.init.ModItems;
+import net.hm1.auxiliary.init.*;
 import net.hm1.auxiliary.setup.config.AuxiliaryConfig;
 import net.hm1.auxiliary.setup.registry.ArsNouveauAuxiliary;
-import net.hm1.auxiliary.init.ModVillagers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -33,18 +30,16 @@ public class Auxiliary
 
     public Auxiliary()
     {
+        AuxiliaryConfig.register();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
-        AuxiliaryConfig.register();
-
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        ModCreativeModTabs.register(modEventBus);
+        ModEnchantments.register(modEventBus);
         ModVillagers.register(modEventBus);
         ArsNouveauAuxiliary.Registry.register(modEventBus);
-
+        ModCreativeModTabs.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
-        //modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::postSetup);
     }
 
@@ -59,11 +54,6 @@ public class Auxiliary
     public void postSetup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(ArsNouveauAuxiliary::postSetup);
-    }
-
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-        //if (event.getTabKey() == CreativeModeTabs.)
     }
 
     @SubscribeEvent

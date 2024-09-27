@@ -23,18 +23,20 @@ public class AuxiliaryConfig
     public static ForgeConfigSpec COMMON_CONFIG;
     public static ForgeConfigSpec CLIENT_CONFIG;
 
+    public static class Enchantments
+    {
+        public static ForgeConfigSpec.IntValue BALLISTICS_MAX_LEVEL;
+        public static ForgeConfigSpec.DoubleValue BULLET_DAMAGE_PER_LEVEL;
+        public static ForgeConfigSpec.DoubleValue SPELL_POWER_PER_LEVEL;
+        public static ForgeConfigSpec.DoubleValue SPELL_HASTE_PER_LEVEL;
+        public static ForgeConfigSpec.DoubleValue SPELL_RESIST_PER_LEVEL;
+    }
+
     public static class MagicArmorConfig
     {
         public static ForgeConfigSpec.ConfigValue<List<? extends String>> MAGIC_ARMOR_ITEMS;
         public static ForgeConfigSpec.BooleanValue MAGIC_ARMOR_IS_THREADABLE;
     }
-
-    public static class SpellPower
-    {
-        public enum BoostType { ADD, MULTIPLY }
-        public static ForgeConfigSpec.BooleanValue USE_ARS_SP_FOR_IRONS;
-    }
-
 
     public static Map<GunsRegistry.GunTypes, ForgeConfigSpec.IntValue> GUNTYPE_SCHEMATIC_PRICES = new HashMap<>();
     private static final Map<GunsRegistry.GunTypes, Integer> DEFAULT_GUNTYPE_SCHEMATIC_PRICES = new HashMap<>();
@@ -49,6 +51,11 @@ public class AuxiliaryConfig
         DEFAULT_GUNTYPE_SCHEMATIC_PRICES.put(SPECIAL, 999);
     }
     public static ForgeConfigSpec.BooleanValue NO_ATTACHMENTS_ON_CRAFTED_GUNS;
+
+    public static class Auxiliary
+    {
+
+    }
 
     public static ForgeConfigSpec.IntValue AUXI_WEAPON_DURABILITY;
     public static ForgeConfigSpec.DoubleValue AUXI_SPEED;
@@ -75,6 +82,24 @@ public class AuxiliaryConfig
             NO_ATTACHMENTS_ON_CRAFTED_GUNS = SERVER_BUILDER
                 .comment("Pointblank crafted guns have attachments when crafted. Set this to true to make no attachments on craft.")
                 .define("no_attachment_on_crafted_guns", true);
+        SERVER_BUILDER.pop();
+
+        SERVER_BUILDER.push("enchantments");
+            Enchantments.BALLISTICS_MAX_LEVEL = SERVER_BUILDER
+                .comment("Max level for Ballistics enchantment.")
+                .defineInRange("ballistics_max_level", 5, 1, 32767);
+            Enchantments.BULLET_DAMAGE_PER_LEVEL = SERVER_BUILDER
+                .comment("Added Bullet Damage per Ballistics enchantment level.")
+                .defineInRange("bullet_damage_per_level", 2.5f, 0f, 99f);
+            Enchantments.SPELL_POWER_PER_LEVEL = SERVER_BUILDER
+                .comment("Added Spell Power per enchantment level. ")
+                    .defineInRange("spell_power_per_level", 0.05f, 0f, 99f);
+            Enchantments.SPELL_HASTE_PER_LEVEL = SERVER_BUILDER
+                .comment("Added Cast Time Reduction per enchantment level.")
+                .defineInRange("spell_haste_per_level", 2f, 0f, 99f);
+            Enchantments.SPELL_RESIST_PER_LEVEL = SERVER_BUILDER
+                .comment("Added Spell Resist per enchantment level.")
+                .defineInRange("spell_resist_per_level", 2f, 0f, 99f);
         SERVER_BUILDER.pop();
 
         SERVER_BUILDER.push("gun schematic trade prices");

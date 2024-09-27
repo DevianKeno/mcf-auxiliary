@@ -3,6 +3,9 @@
   "ars_nouveau.threadable_armor": "Can be Threaded",
   "ars_nouveau.threaded": "Threaded",
 
+  "attribute.name.auxiliary.bullet_damage": "Bullet Damage",
+  "attribute.name.auxiliary.bullet_damage.desc": "Damage multiplier for bullets!",
+
   "auxiliary.gun_schematic_researched": "Researched",
   "auxiliary.gun_schematic_unresearched": "Not yet researched",
   "auxiliary:nether_first_enter": "",
@@ -15,6 +18,9 @@
   "command.auxiliary.gunschematic.invalid_type": "Invalid gun type",
 
   "creativetab.auxiliary_creative_tab": "Auxiliary",
+
+  "enchantment.auxiliary.ballistics": "Ballistics",
+  "enchantment.auxiliary.ballistics.desc": "Increases bullet damage of guns.",
 
   "entity.minecraft.villager.auxiliary.gunsmith": "Gunsmith",
 

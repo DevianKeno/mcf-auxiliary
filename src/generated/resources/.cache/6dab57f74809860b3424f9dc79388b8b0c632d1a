@@ -1,8 +1,8 @@
-// 1.20.1	2024-09-23T20:54:33.3909526	Tags for minecraft:item mod id forge
+// 1.20.1	2024-09-27T16:35:06.588641	Tags for minecraft:item mod id forge
 7b19805b522bb42913c7ab2d26210800f75d68ae data/forge/tags/items/armors/dragonsteel.json
 ee893331efff215f598545ad2bd878b84daf5b84 data/forge/tags/items/armors/dragon_scale.json
 1425feec71f16405541407a8cfd84585098b3ed5 data/forge/tags/items/armors/magic.json
 1e539aea4b3aed777101e1b3d57b4ae458ae837e data/forge/tags/items/core_material.json
-b318df7964eeda71abede9905c1f85fe23b13356 data/forge/tags/items/dragon_scale.json
+b318df7964eeda71abede9905c1f85fe23b13356 data/forge/tags/items/dragon_scales.json
 6a85cd170accf1a7e203cce7e183d605b983fa45 data/forge/tags/items/gun.json
 7a8e16c1eaf0e8a6aeb5211703f1484590e8e209 data/forge/tags/items/limestone.json
