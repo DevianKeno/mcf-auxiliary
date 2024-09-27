@@ -58,7 +58,7 @@ minecraft {
 
         client {
             property 'forge.enabledGameTestNamespaces', mod_id
-            arg "-mixin.config=auxiliary.mixins.json"
+            arg "mixin.config=auxiliary.mixins.json"
         }
 
         server {
@@ -111,6 +111,10 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    implementation fg.deobf("curse.maven:sinytra-connector-890127:5605667")
+    implementation fg.deobf("curse.maven:forgified-fabric-api-889079:5387432")
+    implementation fg.deobf("curse.maven:connector-extras-913445:5490637")
 
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
