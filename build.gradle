@@ -128,7 +128,7 @@ dependencies {
     implementation fg.deobf("curse.maven:cataclysm-551586:5409421")
     implementation fg.deobf("curse.maven:create-328085:5689514")
     implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
-    implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:5616394"
+    implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:5616394")
     implementation fg.deobf("curse.maven:stalwart_dungeons-474817:4703671")
     implementation fg.deobf("curse.maven:timeless-and-classics-zero-1028108:5529117")
     implementation fg.deobf("curse.maven:vics-point-blank-961053:5642788")
